@@ -34,12 +34,4 @@ Userprog::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-
-  #One thing you will quickly notice when running tests with Factory Girl is that they are slow. The reason is not Factory Girl’s fault, and in fact it is a feature, not a bug. The issue is that the BCrypt algorithm used in Section 6.3.1 to create a secure password hash is slow by design: BCrypt’s slow speed is part of what makes it so hard to attack. Unfortunately, this means that creating users can bog down the test suite; happily, there is an easy fix. BCrypt uses a cost factor to control how computationally costly it is to create the secure hash. The default value is designed for security, not for speed, which is perfect for production applications, but in tests our needs are reversed: we want fast tests, and don’t care at all about the security of the test users’ password hashes. The solution is to add a few lines to the test configuration file, config/environments/test.rb, redefining the cost factor from its secure default value to its fast minimum value
-
-  require 'bcrypt'
-  silence_warnings do
-    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
-  end
-
 end

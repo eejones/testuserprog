@@ -1,5 +1,15 @@
 @import "bootstrap";
 
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
 /* universal */
 
 html {
@@ -79,26 +89,31 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #999;
-}
-
-footer a {
-  color: #555;
-}  
-
-footer a:hover { 
-  color: #222;
-}
-
-footer small {
+  a {
+    color: #555;
+    &:hover { 
+    color: #222;
+    }
+  }
+  small {
   float: left;
-}
-
-footer ul {
+  }
+  ul {
   float: right;
   list-style: none;
+     li {
+     float: left;
+     margin-left: 10px;
+     }
+  }
 }
 
-footer ul li {
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
   float: left;
-  margin-left: 10px;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }

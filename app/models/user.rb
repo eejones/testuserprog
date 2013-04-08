@@ -11,11 +11,11 @@
 
 class User < ActiveRecord::Base
 
-attr_accessible :name, :email, :password, :password_confirmation
-#the code below does the same thing as the code above. This is also true for validates below
-#  attr_accessible(:email, :name, :password, :password_confirmation)
+  attr_accessible :name, :email, :password, :password_confirmation
+  #the code below does the same thing as the code above. This is also true for validates below
+  #  attr_accessible(:email, :name, :password, :password_confirmation)
 
-has_secure_password
+  has_secure_password
 
   before_save { |user| user.email = email.downcase }
 

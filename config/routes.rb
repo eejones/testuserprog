@@ -1,5 +1,7 @@
 Userprog::Application.routes.draw do
-  get "users/new"
+  resources :users
+
+  # resources :users makes get "users/new" uneccesary because it gives the app all of the actions necessary for a users resource
 
   root :to => 'static_pages#home'
 
