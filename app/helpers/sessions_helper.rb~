@@ -20,4 +20,23 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
    # without this method, the user’s signin status would be forgotten: as soon as the user went to another page—poof!—the session would end and the user would be automatically signed out. To avoid this problem, we can find the user corresponding to the remember token created by the sign_in method above
   end
+
+  def sign_out
+    self.current_user = nil
+    cookies.delete(:remember_token)
+  end
+
+
+  def current_user?
+    user == current_user
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  def store_location
+    session[:return_to] = request.url
+  end
 end
