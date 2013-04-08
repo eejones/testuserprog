@@ -9,6 +9,7 @@ describe "Static pages" do
     before { visit root_path }
     it { should have_selector('h1', :text => 'Userprog')}
     it { should have_selector('title', :text => full_title(''))}
+    
   end
 
   describe "Help page" do
@@ -29,5 +30,7 @@ describe "Static pages" do
     it { should have_selector('h1', :text => 'Contact')}
     it { should have_selector('title', :text => full_title(''))}
   end
+
+
 
 end
